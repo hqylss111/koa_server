@@ -11,6 +11,12 @@ class UserController {
         ctx.body = result;
     };
 
+
+    async userLogin(ctx,body){
+        
+        ctx.body = '登录成功';
+    }
+
 }
 
 module.exports = new UserController();

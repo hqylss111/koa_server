@@ -1,18 +1,13 @@
 const koa = require('koa');
 const koaBodyparser = require('koa-bodyparser');
 
-const userRouter = require('../router/user.router')
 const errorHandle = require('./error-handle');
+const useRouters = require('../router');
 const app = new koa();
+app.useRouters = useRouters;
+
 // 解析json
 app.use(koaBodyparser());
-
- // 判断用户是否登录过期
-
-
- 
-app.use(userRouter.routes());
-app.use(userRouter.allowedMethods());
-
+app.useRouters();
 app.on('error',errorHandle);
 module.exports = app;
